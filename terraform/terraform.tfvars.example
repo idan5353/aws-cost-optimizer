@@ -1,0 +1,35 @@
+# AWS Configuration
+aws_region = "us-west-2"
+
+# Project Configuration
+project_name = "cost-optimizer"
+environment  = "production"
+
+# Cost Thresholds
+daily_cost_threshold  = 100.00
+weekly_cost_threshold = 500.00
+
+# Alert Configuration
+alert_email       = "your-email@example.com"
+slack_webhook_url = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+
+# Cleanup Configuration
+cleanup_enabled   = false  # Set to true to enable automated cleanup
+cleanup_dry_run   = true   # Set to false to perform actual cleanup
+
+# Resource Cleanup Thresholds
+cpu_threshold_percent = 5
+volume_age_days       = 30
+snapshot_age_days     = 90
+
+# Cost Anomaly Detection
+cost_anomaly_threshold = 100
+
+# Common Tags
+common_tags = {
+  Project     = "CostOptimization"
+  Environment = "Production"
+  ManagedBy   = "Terraform"
+  Owner       = "DevOps"
+  CostCenter  = "Engineering"
+}
