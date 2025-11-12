@@ -7,6 +7,9 @@
 
 > An automated serverless cost monitoring and optimization system built with AWS Lambda, Terraform, and Cost Explorer API. Automatically monitors AWS spending, identifies cost-saving opportunities, and cleans up idle resources to reduce cloud waste.
 
+
+
+
 ![optimazer diagram](https://github.com/user-attachments/assets/861394c2-bbb8-4cfa-8041-7a5d73e25781)
 
 
