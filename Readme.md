@@ -7,7 +7,8 @@
 
 > An automated serverless cost monitoring and optimization system built with AWS Lambda, Terraform, and Cost Explorer API. Automatically monitors AWS spending, identifies cost-saving opportunities, and cleans up idle resources to reduce cloud waste.
 
-![Architecture Diagram](docs/architecture.png)
+![optimazer diagram](https://github.com/user-attachments/assets/861394c2-bbb8-4cfa-8041-7a5d73e25781)
+
 
 ## 🎯 Features
 
@@ -31,92 +32,7 @@ This system helps reduce AWS costs by automatically detecting and cleaning up:
 
 **Estimated Monthly Savings**: $50-500+ depending on your resource waste
 
-## 🏗️ Architecture
+![costoptimazation2](https://github.com/user-attachments/assets/8b6c67c2-2d76-4465-b9e1-46137b27e91f)
+![costoptimazation1](https://github.com/user-attachments/assets/100cd3c9-efba-4f15-ac1a-7d2108d2fbdf)
 
-┌─────────────────────────────────────────────────────────────────┐
-│ AWS Cloud │
-│ │
-│ ┌──────────────┐ ┌──────────────┐ │
-│ │ EventBridge │────────>│ Lambda │ │
-│ │ (Scheduled) │ │ Cost Monitor │ │
-│ └──────────────┘ └──────┬───────┘ │
-│ Daily 8AM UTC │ │
-│ │ │
-│ v │
-│ ┌────────────────┐ │
-│ │ Cost Explorer │ │
-│ │ API │ │
-│ └────────┬───────┘ │
-│ │ │
-│ v │
-│ ┌───────────────────────────┴─────────────────────┐ │
-│ │ │ │
-│ v v │
-│ ┌─────────┐ ┌──────────┐ │
-│ │ S3 │ │ SNS │ │
-│ │ Reports │ │ Alerts │ │
-│ └─────────┘ └─────┬────┘ │
-│ │ │
-│ ┌──────────────┐ ┌──────────────┐ │ │
-│ │ EventBridge │────────>│ Lambda │ │ │
-│ │ (Scheduled) │ │ Cleanup │ │ │
-│ └──────────────┘ └──────┬───────┘ │ │
-│ Weekly Monday 6AM │ │ │
-│ │ │ │
-│ v v │
-│ ┌────────────────┐ ┌─────────┐ │
-│ │ EC2 / EBS │ │ Email │ │
-│ │ CloudWatch │ │ Slack │ │
-│ └────────────────┘ └─────────┘ │
-└─────────────────────────────────────────────────────────────────┘
 
-text
-
-## 📋 Prerequisites
-
-- **AWS Account** with appropriate permissions
-- **Terraform** >= 1.0
-- **AWS CLI** configured with credentials
-- **Python** 3.11+
-- **Cost Explorer** enabled (wait 24 hours after enabling for data)
-
-## 🚀 Quick Start
-
-### 1. Clone the Repository
-
-git clone https://github.com/yourusername/aws-cost-optimizer.git
-cd aws-cost-optimizer
-
-text
-
-### 2. Configure AWS Credentials
-
-aws configure
-
-Enter your AWS Access Key ID
-Enter your AWS Secret Access Key
-Enter your default region (e.g., us-west-2)
-text
-
-### 3. Enable AWS Cost Explorer
-
-1. Log into AWS Console as **root user**
-2. Navigate to Cost Management → Cost Explorer
-3. Click **"Enable Cost Explorer"**
-4. Wait 24 hours for data to populate
-
-### 4. Set Up Terraform Variables
-
-cd terraform
-cp terraform.tfvars.example terraform.tfvars
-
-text
-
-Edit `terraform.tfvars` with your settings:
-
-aws_region = "us-west-2"
-alert_email = "your-email@example.com"
-daily_cost_threshold = 50.00
-weekly_cost_threshold = 300.00
-cleanup_enabled = false # Set true to enable cleanup
-cleanup_dry_run = true # Set false for real deletions
